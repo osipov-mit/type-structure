@@ -101,11 +101,13 @@ assert.deepEqual(getTypeStructure('CustomStructOption', types), {
     },
   },
 });
+
 assert.deepEqual(getTypeStructure('Vec<u8>', {}), {
   type: 'Vec',
   name: 'Vec<u8>',
   value: { type: 'Primitive', name: 'u8', value: 'u8' },
 });
+
 assert.deepEqual(getTypeStructure('Result<String, i32>', {}), {
   type: 'Result',
   name: 'Result<String, i32>',
@@ -113,4 +115,10 @@ assert.deepEqual(getTypeStructure('Result<String, i32>', {}), {
     ok: { type: 'Primitive', name: 'String', value: 'String' },
     err: { type: 'Primitive', name: 'i32', value: 'i32' },
   },
+});
+
+assert.deepEqual(getTypeStructure('String', {}), {
+  type: 'Primitive',
+  name: 'String',
+  value: 'String',
 });
